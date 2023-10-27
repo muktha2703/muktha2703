@@ -1,0 +1,72 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        h1{
+            margin-top: 100px;
+            margin-left: 180px;
+            font-size: 30px;
+        }
+        .src{
+            width: 1000px;
+            margin-left: 200px;
+        }
+        button{
+            margin-left: 900px;
+            width: 100px;
+            height: 50px;
+        }
+        .nxt{
+            width: 50px;
+        }
+        .user-select{
+            margin-left: 200px;
+        }
+        a{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<form class="flex-fill" method="POST">
+    {% csrf_token %}
+    <div class="src">
+        <h1>Search user</h1>
+        <hr>
+        <!-- <img src="{% static 'assets1/images/icon/search.png' %}" alt="icon"> -->
+        <input type="text" name="account_number" placeholder="Enter Account Number or ID">
+        <button type="submit">Next</button>
+    </div>
+    <div class="nxt">
+    <input type="submit" name="Next">
+    </div>
+
+</form>    
+    <div class="user-select">
+        {% if query %}
+        {% for a in account %}
+        <div class="single-user">
+            <div class="left d-flex align-items-center">
+                <div class="img-area">
+                    <!-- <img src="{{ a.user.kyc.image.url }}" alt="image"> -->
+                    <img src="{{ a.user.kyc.image.url }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;"  alt="image">
+
+                </div>
+                <div class="text-area">
+                    <p>{{ a.user.kyc.full_name|title }}</p>
+                    <span class="mdr"><b>{{ a.account_number }}</b></span><br>
+                    <span class="mdr">{{ a.user.email }}</span><br>
+                    <a href="{% url 'transactions:request_amount' a.account_number %}">Request</a>
+                </div>
+            </div>
+        {% empty %}
+        <div>
+            <h4 class="mt-4">Account does not exist</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>   
+    
+{% endblock %}

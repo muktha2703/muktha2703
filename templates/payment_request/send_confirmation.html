@@ -1,0 +1,47 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        h1{
+            margin-top: 100px;
+            margin-left: 180px;
+            font-size: 30px; 
+        }
+        .amt-send{
+            width: 1000px;
+            margin-left: 200px;
+        }
+        .desc{
+            width: 1000px;
+            margin-left: 200px;
+        }
+        .req{
+            width: 100px;
+            height: 50px;
+          margin-left: 1000px;
+        }
+    </style>
+</head>
+<body>
+<form method="POST"> 
+    {% csrf_token %} 
+ <div>
+    <h1>Make Payment</h1>
+    <hr>
+    <div class="amt-send">
+        <h2>Amount</h2>
+    <input type="text" name="amount-se" placeholder="Enter Amount to send" value="tran">
+    </div>
+    <div class="desc">
+        <h2>Description</h2>
+        <input type="text" name="description" value="">
+    </div>
+    <div class="req">
+        <button type="submit">Next</button>
+                           
+    </div>
+ </div>
+ </form>
+</body>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<head>
+    <style>
+      .user{
+        margin-left: 300px;
+        margin-top: 100px;
+      }
+      h1{
+        font-size: 30px;
+      }
+      h2{
+    
+        font-size: 20px;
+      }
+      .amt{
+        display: flex;
+      }
+      input{
+        color: red;
+      }
+    </style>
+</head>
+<body>
+<form method="POST">
+  {% csrf_token %}
+  <div class="user">
+  <div class="container">
+    <div class="jumbotron">
+     <div class="row">
+      <div class="col-md-5">
+      <div class="card card-body">
+        <div class="amt">
+        <input type="submit" name="request_sent" value="request_sent">
+        <input type="submit" name="completed" value="completed">
+        </div>
+      </div>
+     </div>
+     </div>
+    </div>
+  </div>
+  <table border="5" cellpadding="15px">
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Transaction Id</th>
+      <th>Transaction Status</th>
+    <h1>Transaction details here</h1>
+    <!-- <h2>{{data.user}} did transaction of {{data.amount}} on {{data.date}} and Transaction id is {{data.transaction_id}}</h2> -->
+    </tr>
+    {%if query1%}
+    {%for data in transaction%}
+    <tr>
+      <td>{{data.user}}</td>
+      <td>{{data.amount}}</td>
+      <td>{{data.date}}</td>
+      <td>{{data.status}}</td>
+      <td><input type="submit" value="send"></td>
+    </tr>
+    {%endfor%}
+    {%endif%}
+    {%if query2%}
+    {%for data in transaction%}
+    <tr>
+      <td>{{data.user}}</td>
+      <td>{{data.amount}}</td>
+      <td>{{data.date}}</td>
+      <td>{{data.status}}</td>
+      <td><a href="#"><svg xmlns="http://www.w3.org/2000/svg"width="16" height="16"
+        fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+      <path d=""/>
+    </svg></a></td>
+    </tr>
+    {%endfor%}
+    {%endif%}
+    </table >
+    <br>
+    </div>
+</form>
+</body>
+{% endblock %}

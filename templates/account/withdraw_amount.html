@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        <p>Credit_card_balance: <input type="text" value="{{credit.amount}}"></p>
+        <p> Amount: <input type="number"  name="amount"></p>
+        <input type="submit" value="Withdraw">
+    </form>
+</body>
+</html>

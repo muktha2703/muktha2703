@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        <p>Card_Id: <input type="text" value="{{credit.card_id}}"></p>
+        <p>Account Name: <input type="text" value="{{account.kyc.full_name}}"></p>
+        <p>Balance: <input type="text" value="{{credit.user.account.account_balance}}"></p>
+        <p>Credit Amount: <input type="number" placeholder="{{credit.amount}}" name="amount"></p>
+        <input type="submit" value="paybill">
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+        .da{
+            margin-top: 200px;
+            margin-left: 200px;
+            font-size: 10px;
+        }
+        .pw{
+            display: flex;
+            width: 300px;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<div class="da">
+<h3>Account Number:{{account.account_number}}</h3>
+<h3>Account Id:{{account.account_id}}</h3>
+<h3>Full Name:{{kyc.full_name}}</h3>
+<h3>Gender:{{kyc.gender}}</h3>
+<h3>Identity:{{kyc.identity_type}}</h3>
+<h3>DOB:{{kyc.date_of_birth}}</h3>
+<h3>Balance:{{account.account_balance}}</h3>
+<h3>Card_Holder:{{credit.name}}</h3>
+<h3>Card Number{{credit.number}}</h3>
+<h3>Expery Month:{{credit.month}}</h3>
+<h3>Expery Year:{{credit.year}}</h3>
+<h3>Card Type:{{credit.card_type}}</h3>
+<h3>Card Status:{{credit.card_status}}</h3>
+<h3>CVV:{{credit.cvv}}</h3>
+<h3>Credit Card Amount:{{credit.amount}}</h3>
+</div>  
+<div class="pw">
+    <a href="{% url 'transactions:credit_bill' credit.card_id%}"><input type="submit" value="PayBill"></a>
+    <a href="{% url 'transactions:withdraw_amount' credit.card_id%}"><input type="submit" value="Withdraw"></a>
+    <a href="{% url 'transactions:credit_card_delete' credit.card_id%}"><input type="submit" value="Delete"></a>
+</div>  
+{% endblock %}
