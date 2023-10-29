@@ -53,7 +53,7 @@ def account(request):
 def dashboard(request):
     user=request.user
     account=Account.objects.get(user=request.user)
-    kyc=KYC.objects.get(user=request.user)
+    kyc=KYC.objects.all()
     transaction=Transaction.objects.all()
     creditcard_detail=Creditcard.objects.all()
     if request.method=='POST':
